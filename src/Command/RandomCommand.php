@@ -17,9 +17,10 @@ class RandomCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addArgument('min', InputArgument::REQUIRED)
-            ->addArgument('max', InputArgument::REQUIRED)
-            ->addOption('name', null, InputOption::VALUE_REQUIRED)
+            ->setDescription('Example command for generating a random integer and outputting stuff about it')
+            ->addArgument('min', InputArgument::REQUIRED, 'Minimum value')
+            ->addArgument('max', InputArgument::REQUIRED, 'Maximum value')
+            ->addOption('name', null, InputOption::VALUE_REQUIRED, 'Your name')
         ;
     }
 
