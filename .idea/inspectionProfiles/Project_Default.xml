@@ -1,0 +1,21 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PhpDocSignatureIsNotCompleteInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PhpNamedArgumentsWithChangedOrderInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PhpPropertyOnlyWrittenInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PhpStanGlobal" enabled="true" level="INFORMATION" enabled_by_default="false">
+      <scope name="Production" level="ERROR" enabled="true">
+        <option name="config" value="$PROJECT_DIR$/../../MADmedical/nexthealth/backend/phpstan.neon" />
+      </scope>
+      <scope name="Tests" level="ERROR" enabled="true">
+        <option name="config" value="$PROJECT_DIR$/../../MADmedical/nexthealth/backend/phpstan-tests.neon" />
+      </scope>
+    </inspection_tool>
+    <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="processCode" value="true" />
+      <option name="processLiterals" value="true" />
+      <option name="processComments" value="true" />
+    </inspection_tool>
+  </profile>
+</component>
