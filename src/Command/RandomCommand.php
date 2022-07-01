@@ -8,21 +8,22 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Response;
 
 #[AsCommand(name: 'random')]
 class RandomCommand extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->addArgument('min', InputArgument::REQUIRED)
             ->addArgument('max', InputArgument::REQUIRED)
-            ->addOption('name', InputOption::VALUE_REQUIRED)
+            ->addOption('name', null, InputOption::VALUE_REQUIRED)
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln('Hello '.$input->getOption('name'));
 
@@ -46,6 +47,14 @@ class RandomCommand extends Command
         } else {
             $output->writeln('And it is not a prime');
         }
+
+        $wikiHtml = file_get_contents("https://en.wikipedia.org/wiki/{$random}_(number)");
+
+        $crawler = new Crawler($wikiHtml);
+
+        $output->writeln($crawler->filter('#bodyContent .mw-parser-output p')->first()->text(), 0, 200);
+
+        $output->writeln("Read more at https://en.wikipedia.org/wiki/{$random}_(number)");
 
         return self::SUCCESS;
     }
