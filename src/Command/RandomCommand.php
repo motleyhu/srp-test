@@ -52,7 +52,7 @@ class RandomCommand extends Command
 
         $crawler = new Crawler($wikiHtml);
 
-        $output->writeln($crawler->filter('#bodyContent .mw-parser-output p')->first()->text(), 0, 200);
+        $output->writeln($crawler->filter('#bodyContent .mw-parser-output p')->first()->text());
 
         $output->writeln("Read more at https://en.wikipedia.org/wiki/{$random}_(number)");
 
